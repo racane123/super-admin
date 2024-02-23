@@ -1,3 +1,5 @@
+
+/** Event Click Button to the login */
 var btn = document.getElementById('btn');
 
 btn.addEventListener('click', () => {
@@ -9,3 +11,5 @@ btn.addEventListener('click', () => {
         form.style.display = 'none';
     }
 });
+
+

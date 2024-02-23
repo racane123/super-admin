@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Towntech Innovations</title>
     <style>
 
     </style>
@@ -61,27 +61,28 @@
         <div class="contents-sections">
             <div class="contents">
                 <div class="cards">
-                    <img src="image/logo.png" alt="" srcset=""/>
-                    <h3>Lorem, ipsum.</h3>
+                    <img src="image/philippines.jpg" alt="" srcset=""/>
+                    <h3>Geograpical Data</h3>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti corporis quas, repudiandae iure blanditiis ipsam adipisci est obcaecati consectetur vitae enim repellat sequi consequuntur id, incidunt totam in labore minus eaque minima nostrum! Aut itaque libero cupiditate harum eveniet similique ducimus nam quibusdam sed quidem deserunt repellat amet veritatis asperiores numquam culpa natus iste iure officia nulla, quia voluptatem, qui ipsam. Nobis provident quia non molestias tenetur rerum. Architecto nulla enim dolorem! Laboriosam nemo ipsum officiis amet animi iste! Voluptatibus similique officia nihil laboriosam consectetur vero, eveniet adipisci neque praesentium autem eius molestias accusantium. Vero quidem quasi esse! Aspernatur, ducimus.</p>
                 </div>                
             </div>
             <div class="contents">
                 <div class="cards">
-                    <img src="image/logo.png" alt="" srcset=""/>
-                    <h3>Lorem, ipsum.</h3>
+                    <img src="image/financial.jpg" alt="" srcset=""/>
+                    <h3>financial Analysis</h3>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti corporis quas, repudiandae iure blanditiis ipsam adipisci est obcaecati consectetur vitae enim repellat sequi consequuntur id, incidunt totam in labore minus eaque minima nostrum! Aut itaque libero cupiditate harum eveniet similique ducimus nam quibusdam sed quidem deserunt repellat amet veritatis asperiores numquam culpa natus iste iure officia nulla, quia voluptatem, qui ipsam. Nobis provident quia non molestias tenetur rerum. Architecto nulla enim dolorem! Laboriosam nemo ipsum officiis amet animi iste! Voluptatibus similique officia nihil laboriosam consectetur vero, eveniet adipisci neque praesentium autem eius molestias accusantium. Vero quidem quasi esse! Aspernatur, ducimus.</p>
                 </div>                
             </div>
             <div class="contents">
                 <div class="cards">
-                    <img src="image/logo.png" alt="" srcset=""/>
-                    <h3>Lorem, ipsum.</h3>
+                    <img src="image/social-welfare.jpg" alt="" srcset=""/>
+                    <h3>Social Welfare</h3>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti corporis quas, repudiandae iure blanditiis ipsam adipisci est obcaecati consectetur vitae enim repellat sequi consequuntur id, incidunt totam in labore minus eaque minima nostrum! Aut itaque libero cupiditate harum eveniet similique ducimus nam quibusdam sed quidem deserunt repellat amet veritatis asperiores numquam culpa natus iste iure officia nulla, quia voluptatem, qui ipsam. Nobis provident quia non molestias tenetur rerum. Architecto nulla enim dolorem! Laboriosam nemo ipsum officiis amet animi iste! Voluptatibus similique officia nihil laboriosam consectetur vero, eveniet adipisci neque praesentium autem eius molestias accusantium. Vero quidem quasi esse! Aspernatur, ducimus.</p>
                 </div>                
             </div>
         </div>
     </div>
+
 <script src="javascript/app.js"></script>
 </body>
 </html>

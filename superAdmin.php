@@ -6,7 +6,7 @@ function user_login(){
 }
 
 if(!user_login()){
-    header('Location: login.php');
+    header('Location: index.php');
     exit();
 }
 
