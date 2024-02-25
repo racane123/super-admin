@@ -30,20 +30,9 @@
         </ul>
         <div class="buttons"><button id="btn">Login</button></div>
     </nav>
-    <div class="form-container" id="displayForm"> 
-    <div class="login-text"><strong>Towntech</strong>Innovations</div>
-        <form class="login-form">
-            <p>Login to start your session</p>
-            <input class="input-box" type="email" id="email" name="email" placeholder="Email" required>
-            <input class="input-box" type="password" id="password" name="password" placeholder="Password" required>
-            <div class="bottom-form">
-                <div class="remember-me">
-                    <input type="checkbox" name="" id="">Remember Me
-                </div>
-                <button type="submit">Login</button>
-            </div>
-        </form>
-    </div>
+<?php
+include('login.php');
+?>
     <main>
     <div class="layer1">
         <h1>TownTech<br>Innovations</h1>
