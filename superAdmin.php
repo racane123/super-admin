@@ -20,6 +20,6 @@ if(!user_login()){
     <title>Towntech Innovations</title>
 </head>
 <body>
-    
+ <?php include('admin/dashboard.php'); ?>
 </body>
 </html>
