@@ -1,14 +1,6 @@
 <?php
 session_start();
 
-function user_login(){
-    return isset($_SESSION['email']);
-}
-
-if(!user_login()){
-    header('Location: index.php');
-    exit();
-}
 
 ?>
 

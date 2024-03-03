@@ -4,7 +4,8 @@
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-      <img class="animation__shake" src="../node_modules/admin-lte/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+      <img class="animation__shake" src="image/logo.png" alt="TTILogo" height="500" width="500">
+      <p><strong>TownTech</strong> Innovations</p>
     </div>
 
     <!-- Navbar -->
@@ -53,9 +54,7 @@
           <div class="info">
             <a href="#" class="d-block"><?php if (isset($_SESSION['email'])) {
                                           echo $_SESSION['email'];
-                                        } else {
-                                          header('Location: ../index.php');
-                                        }
+                                        } 
                                         ?></a>
           </div>
         </div>
