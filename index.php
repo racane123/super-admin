@@ -7,7 +7,7 @@
     <title>Towntech Innovations</title>
 </head>
 
-<body>
+<body id="background">
     <?php
     include('header.php');
     ?>

@@ -16,7 +16,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $email = $username . '@towntechinnovation.com';
 
     // Check if the email is already registered
-    $check_query = "SELECT * FROM registeruser WHERE email = ?";
+    $check_query = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($check_query);
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -31,7 +31,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
         // Insert the user into the database
-        $insert_query = "INSERT INTO registeruser (email, password) VALUES (?, ?)";
+        $insert_query = "INSERT INTO users (email, password) VALUES (?, ?)";
         $stmt = $conn->prepare($insert_query);
         $stmt->bind_param("ss", $email, $hashed_password);
         

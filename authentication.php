@@ -1,49 +1,44 @@
 <?php
 
-session_start();
-
 require('database/dbconn.php');
 
-// Check if "Remember Me" checkbox is checked
-if (isset($_POST['remember'])) {
-    setcookie('rememberedEmail', $_POST['email'], time() + (86400 * 30), "/"); // 30 days
-}
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $email = $_POST["email"];
+    $password = $_POST["password"];
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $password = mysqli_real_escape_string($conn, $_POST['password']);
-
-    $sql = 'SELECT * FROM registeruser WHERE email = ?';
-    $stmt = mysqli_prepare($conn, $sql);
-
-    mysqli_stmt_bind_param($stmt, 's', $email);
+    $query = "SELECT * FROM users WHERE email=?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "s", $email);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
-    $user = mysqli_fetch_assoc($result);
 
-    if ($user && password_verify($password, $user['password'])) {
-        session_regenerate_id(true);
+    if ($user = mysqli_fetch_assoc($result)) {
+        $hashedPassword = $user["password"];
+        
+        if (password_verify($password, $hashedPassword)) {
+            session_start();
+            $_SESSION['email'] = $user['email'];
+            $_SESSION['role'] = $user['role'];
 
-        $_SESSION['email'] = $user['email'];
-        $_SESSION['role'] = $user['role'];
+            // Generate access token
+            $token = bin2hex(random_bytes(32)); // Generate a random 256-bit token
+            
+            // Insert token into the database
+            $userId = $user["id"];
+            $expirationDate = date("Y-m-d H:i:s", strtotime("+1 day"));
+            $query = "INSERT INTO access_tokens (token, user_id, expiration_date) VALUES (?, ?, ?)";
+            $stmt = mysqli_prepare($conn, $query);
+            mysqli_stmt_bind_param($stmt, "sis", $token, $userId, $expirationDate);
+            mysqli_stmt_execute($stmt);
 
-        $response = [
-            'message' => 'Login successful',
-            'role' => $user['role'],
-        ];
-        http_response_code(200);
-        echo json_encode($response);
+            header('Content-Type: application/json');
+            echo json_encode(array("success" => true, "token" => $token));
+        } else {
+            echo json_encode(array("success" => false, "message" => "Invalid email or password."));
+        }
     } else {
-        $response = ['message' => 'Invalid credentials'];
-        http_response_code(401); // Unauthorized
-        echo json_encode($response);
+        echo json_encode(array("success" => false, "message" => "Invalid email or password."));
     }
-
-    mysqli_stmt_close($stmt);
-} else {
-    $response = ['message' => 'Invalid request method'];
-    http_response_code(405); // Method Not Allowed
-    echo json_encode($response);
 }
 
-mysqli_close($conn);
+?>

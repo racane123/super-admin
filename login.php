@@ -1,4 +1,8 @@
-
+<style>
+    .alert {
+        position: absolute;
+    }
+</style>
 
 <div class="form-container" id="displayForm">
     <div class="login-logo">
@@ -7,7 +11,7 @@
     <div class="card">
         <div class="card-body login-card-body">
             <p class="login-box-msg">Sign in to start your session</p>
-            <form  id="loginForm">
+            <form id="loginForm">
                 <div class="input-group mb-3">
                     <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
                     <div class="input-group-append">
@@ -46,58 +50,39 @@
 </div>
 
 
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
 
-    $(document).ready(function () {
-        $('#loginForm').submit(function (e) {
-            e.preventDefault();
 
-            // Gather form data
+    $(document).ready(function() {
+        $('#loginForm').submit(function(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            // Get form data
             var formData = $(this).serialize();
-
-            // Check if "Remember Me" checkbox is checked
-            var rememberMe = $('#remember').prop('checked') ? 'true' : 'false';
 
             // Send AJAX request
             $.ajax({
-                url: 'authentication.php',
                 type: 'POST',
-                data: formData + '&remember=' + rememberMe, // Pass remember value to the server
-                dataType: 'json',  // Assuming the response is in JSON format
-                success: function (response) {
-                    if (response && response.message) {
-                        var alertClass = response.message.includes("successful") ? 'alert-success' : 'alert-danger';
-                        var alertHTML = '<div class="alert ' + alertClass + ' alert-dismissible fade show" role="alert" id="Close">' +
-                            response.message +
-                            '<button type="button" class="btn-close text-left" data-bs-dismiss="alert" aria-label="Close" onclick="fClose()">X</button>' +
-                            '</div>';
-
-                        $('#background').before(alertHTML);
-
-                        if (response.role) {
-                            // Check the role and redirect accordingly
-                            setTimeout(function () {
-                                if (response.role === 'admin') {
-                                    window.location.href = "superAdmin.php";
-                                } else if (response.role === 'user') {
-                                    window.location.href = "../index.php";
-                                } else if (response.role === 'driver') {
-                                    window.location.href = "../driver/driver-map.php";
-                                }
-                            }, 2200);
-                        }
+                url: 'authentication.php',
+                data: formData,
+                dataType: 'json',
+                success: function(response) {
+                    if (response.success) {
+                        // Login successful, redirect or do something else
+                        window.location.href = 'superAdmin.php';
                     } else {
-                        console.error('Invalid response format.');
+                        // Login failed, display error message
+                        $('.alert').remove(); // Remove existing alert messages
+                        $('.login-card-body').prepend('<div class="alert alert-danger">' + response.message + '</div>');
                     }
                 },
-                error: function (error) {
-                    console.log('Error:', error);
+                error: function(xhr, status, error) {
+                    // Handle AJAX errors
+                    console.error(xhr.responseText);
                 }
             });
         });
     });
-
-
 </script>

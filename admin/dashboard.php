@@ -4,8 +4,8 @@
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-      <img class="animation__shake" src="image/logo.png" alt="TTILogo" height="500" width="500">
-      <p><strong>TownTech</strong> Innovations</p>
+      <img class="animation__shake" src="image/no-text.png" alt="TTILogo" height="90%" width="65%">
+      <h1><strong>TownTech</strong> Innovations</h1>
     </div>
 
     <!-- Navbar -->
@@ -216,14 +216,6 @@
       </section>
       <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
-      <strong>Copyright &copy; 2023-2024 <a href="https://towntechinnovations.com">TowntechInnovations.com</a>.</strong>
-      All rights reserved.
-      <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 1.0.0
-      </div>
-    </footer>
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
