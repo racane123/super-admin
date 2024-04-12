@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    $query = "SELECT * FROM users WHERE email=?";
+    $query = "SELECT * FROM registeruser WHERE email=?";
     $stmt = mysqli_prepare($conn, $query);
     mysqli_stmt_bind_param($stmt, "s", $email);
     mysqli_stmt_execute($stmt);
@@ -18,13 +18,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if (password_verify($password, $hashedPassword)) {
             session_start();
             $_SESSION['email'] = $user['email'];
-            $_SESSION['role'] = $user['role'];
 
             // Generate access token
             $token = bin2hex(random_bytes(32)); // Generate a random 256-bit token
             
             // Insert token into the database
-            $userId = $user["id"];
+            $userId = $user["user_id"];
             $expirationDate = date("Y-m-d H:i:s", strtotime("+1 day"));
             $query = "INSERT INTO access_tokens (token, user_id, expiration_date) VALUES (?, ?, ?)";
             $stmt = mysqli_prepare($conn, $query);

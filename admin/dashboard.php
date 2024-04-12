@@ -1,3 +1,21 @@
+<?php
+      
+if (isset($_GET['action']) && $_GET['action'] === 'logout') {
+  $url ='http://localhost/group68/cas_server.php?action=logout';
+  $result = file_get_contents($url);
+  $response = json_decode($result, true);
+  if ($response && $response['success']) {
+      session_unset();
+      session_destroy();
+      header('Location: index.php');
+      exit();
+  } else {
+      echo 'Logout failed.';
+  }
+}
+    
+    
+?>
 
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
@@ -33,6 +51,8 @@
           </a>
         </li>
       </ul>
+
+      <button class="btn btn-primar"><a href="?action=logout"><i class="fas fa-sign-out-alt"></i></a></button>
     </nav>
     <!-- /.navbar -->
 
@@ -213,6 +233,9 @@
           </div>
           <!-- /.row (main row) -->
         </div><!-- /.container-fluid -->
+        <div>
+          
+        </div>
       </section>
       <!-- /.content -->
     </div>
@@ -220,6 +243,7 @@
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
       <!-- Control sidebar content goes here -->
+      
     </aside>
     <!-- /.control-sidebar -->
   </div>
@@ -251,7 +275,6 @@ function accountsDashboard(event) {
     dataType: 'html',
     success: function(data) {
       // Update the content of the dashboard
-      console.log(data);
       $('.content-creation').html(data);
       $('h2').text('Account Management');
     },
